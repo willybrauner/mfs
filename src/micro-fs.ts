@@ -4,21 +4,21 @@ import { dirname, join } from "path"
 /**
  * Check if a file exists.
  */
-export async function fileExists(path: string): Promise<Promise<boolean> | undefined> {
+export async function fileExists(path: string): Promise<boolean> {
   try {
     return (await fs.stat(path)).isFile()
   } catch (e) {
-    console.error("fileExists error", e)
+    return false
   }
 }
 
 /**
- * Write a file.
+ * Create & write a file
  */
-export async function writeFile(path: string, content: string): Promise<void> {
+export async function createFile(path: string, content: string = ""): Promise<void> {
   try {
-    fs.mkdir(dirname(path), { recursive: true })
-    fs.writeFile(path, content)
+    await fs.mkdir(dirname(path), { recursive: true })
+    await fs.writeFile(path, content)
   } catch (e) {
     console.error("writeFile error", e)
   }
@@ -33,7 +33,13 @@ export async function removeFile(path: string): Promise<boolean> {
     console.warn(`Can't remove file "${path}" because it doesn't exist. return.`)
     return
   }
-  if (exist) fs.unlink(path)
+  if (exist) {
+    try {
+      await fs.unlink(path)
+    } catch (e) {
+      return false
+    }
+  }
 }
 
 /**
@@ -61,7 +67,7 @@ export async function copyFile(
     transform,
     force,
   }: { transform?: (content: string) => Promise<string>; force?: boolean } = {}
-): Promise<boolean> {
+): Promise<void> {
   if (!force) {
     const exist = await fileExists(dest)
     if (exist) {
@@ -74,7 +80,7 @@ export async function copyFile(
   if (transform) {
     let content = await fs.readFile(src).then((res) => res.toString())
     content = await transform(content)
-    await writeFile(dest, content)
+    await createFile(dest, content)
   } else {
     await fs.mkdir(dirname(dest), { recursive: true })
     await fs.copyFile(src, dest)
@@ -88,7 +94,7 @@ export async function dirExists(path: string): Promise<boolean> {
   try {
     return (await fs.stat(path)).isDirectory()
   } catch (e) {
-    console.error("dirExists error", e)
+    return false
   }
 }
 
@@ -142,12 +148,13 @@ export async function copyDir(
   if (!force) {
     const exist = await dirExists(dest)
     if (exist) {
-      console.warn(
+      console.error(
         `Can't copy folder "${dest}" because it already exist on destination. return`
       )
       return
     }
   }
+
   try {
     if (!(await fs.stat(src)).isDirectory()) throw new Error()
   } catch (e) {
