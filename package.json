@@ -1,11 +1,11 @@
 {
-  "name": "@wbe/micro-fs",
+  "name": "@wbe/mfs",
   "version": "0.1.0",
-  "description": "node fs shortcut function",
+  "description": "nodejs fs wrapper",
   "author": "Willy Brauner",
   "type": "module",
   "license": "MIT",
-  "source": "src/micro-fs.ts",
+  "source": "src/mfs.ts",
   "main": "dist/index.cjs",
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
@@ -13,7 +13,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/willybrauner/micro-fs.git"
+    "url": "git://github.com/willybrauner/mfs.git"
   },
   "publishConfig": {
     "access": "public"

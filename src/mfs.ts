@@ -33,12 +33,11 @@ export async function removeFile(path: string): Promise<boolean> {
     console.warn(`Can't remove file "${path}" because it doesn't exist. return.`)
     return
   }
-  if (exist) {
-    try {
-      await fs.unlink(path)
-    } catch (e) {
-      return false
-    }
+
+  try {
+    await fs.unlink(path)
+  } catch (e) {
+    return false
   }
 }
 
