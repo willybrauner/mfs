@@ -1,16 +1,37 @@
 {
-  "name": "micro-fs",
+  "name": "@wbe/micro-fs",
   "version": "0.1.0",
   "description": "node fs shortcut function",
-  "main": "index.js",
+  "author": "Willy Brauner",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "license": "MIT",
+  "source": "src/micro-fs.ts",
+  "main": "dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "private": false,
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/willybrauner/micro-fs.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && microbundle",
+    "build:watch": "microbundle watch --no-sourcemap --format esm",
+    "test:watch": "vitest",
+    "test": "vitest run"
+  },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "microbundle": "^0.15.0",
+    "typescript": "^4.7.4",
+    "vitest": "^0.18.1"
+  },
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "fs": "^0.0.1-security"
   }
 }
