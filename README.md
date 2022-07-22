@@ -15,8 +15,8 @@ npm install @wbe/mfs
 import { * as mfs } from '@wbe/mfs';
 
 (async () => {
-  await mfs.createFile('foo.txt', 'Hello World');
-  const content = await mfs.readFile('foo.txt');
+  await mfs.createFile('/test/foo.txt', 'Hello World');
+  const content = await mfs.readFile('/test/foo.txt');
   console.log(content); // Hello World
 })();
 ```
