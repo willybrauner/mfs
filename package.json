@@ -25,13 +25,13 @@
     "test:watch": "vitest",
     "test": "vitest run"
   },
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
   "devDependencies": {
     "microbundle": "^0.15.0",
     "typescript": "^4.7.4",
-    "vitest": "^0.18.1"
-  },
-  "dependencies": {
-    "@types/node": "^18.0.6",
-    "fs": "^0.0.1-security"
+    "vitest": "^0.18.1",
+    "@types/node": "^18.0.6"
   }
 }
