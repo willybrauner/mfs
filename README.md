@@ -14,9 +14,10 @@ npm install @wbe/mfs
 import { * as mfs } from '@wbe/mfs';
 
 (async () => {
+  // create a new file in a non-existing directory
   await mfs.createFile('/test/foo.txt', 'Hello World');
   const content = await mfs.readFile('/test/foo.txt');
-  console.log(content); // Hello World
+  console.log(content); // -> "Hello World"
 })();
 ```
 
