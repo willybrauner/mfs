@@ -1,7 +1,6 @@
 # mfs
 
-`mfs` (micro-fs) is a nodejs fs wrapper that provides some hight level functions collection
-for manipulating files and directories.
+`mfs` (micro-fs) is a nodejs fs wrapper that provides a collection of high-level functions for manipulating files and directories.
 
 ## Installation
 
