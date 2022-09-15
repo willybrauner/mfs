@@ -2,3 +2,4 @@ node_modules
 dist
 tests/tmp/*
 !tests/tmp/.gitkeep
+.idea
