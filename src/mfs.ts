@@ -1,5 +1,6 @@
 import * as fs from "fs/promises"
 import { dirname, join } from "path"
+import {MakeDirectoryOptions} from "fs";
 
 /**
  * Check if a file exists.
@@ -15,9 +16,10 @@ export async function fileExists(path: string): Promise<boolean> {
 /**
  * Create & write a file
  */
-export async function createFile(path: string, content: string = ""): Promise<void> {
+export async function createFile(path: string, content: string = "", options: MakeDirectoryOptions = { recursive: true, mode: 0o777}): Promise<void> {
   try {
-    await fs.mkdir(dirname(path), { recursive: true })
+    await fs.mkdir(dirname(path), options)
+    await fs.chmod(dirname(path), options.mode)
     await fs.writeFile(path, content)
   } catch (e) {
     console.error("writeFile error", e)
