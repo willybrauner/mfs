@@ -3,36 +3,39 @@
   "version": "0.1.1",
   "description": "nodejs fs wrapper",
   "author": "Willy Brauner",
-  "type": "module",
   "license": "MIT",
-  "source": "src/mfs.ts",
-  "main": "dist/index.cjs",
-  "module": "./dist/index.module.js",
-  "unpkg": "./dist/index.umd.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "private": false,
   "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git://github.com/willybrauner/mfs.git"
   },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && microbundle",
-    "build:watch": "microbundle watch --no-sourcemap --format esm",
-    "test:watch": "vitest",
-    "test": "vitest run",
-    "pre-publish": "npm run clean && npm run build && npm run test"
+    "build": "tsup",
+    "build:watch": "tsup --watch --sourcemap",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "pre-publish": "npm run build && npm run test"
   },
   "dependencies": {
-    "fs-extra": "^10.1.0"
+    "fs-extra": "^11.1.1"
   },
   "devDependencies": {
-    "@types/node": "^18.0.6",
-    "microbundle": "^0.15.0",
-    "typescript": "^4.7.4",
-    "vitest": "^0.18.1"
+    "@types/node": "^20.8.10",
+    "microbundle": "^0.15.1",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "tsup": "^7.2.0"
   }
 }
