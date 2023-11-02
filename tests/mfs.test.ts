@@ -1,5 +1,5 @@
 import { it, expect, beforeEach } from "vitest"
-import * as mfs from "../src/mfs"
+import * as mfs from "../src"
 import { resolve } from "path"
 
 // reset tmp directory before each test
