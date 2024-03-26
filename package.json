@@ -1,6 +1,6 @@
 {
   "name": "@wbe/mfs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "nodejs fs wrapper",
   "author": "Willy Brauner",
   "license": "MIT",
