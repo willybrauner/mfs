@@ -1,4 +1,4 @@
-import { it, expect, beforeEach } from "vitest"
+import {it, expect, beforeEach, afterAll} from "vitest"
 import * as mfs from "../src"
 import { resolve } from "path"
 
