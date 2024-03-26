@@ -23,6 +23,8 @@ import { * as mfs } from '@wbe/mfs';
 
 ## API
 
+### Async functions
+
 - fileExists
 
 ```ts
@@ -92,6 +94,76 @@ function copyDir(
   dest: string,
   { force }: { force?: boolean } = {}
 ): Promise<void>
+```
+
+
+### Sync functions
+
+- fileExistsSync
+
+```ts
+function fileExistsSync(path: string): boolean
+```
+
+- createFileSync
+
+```ts
+function createFileSync(path: string, content?: string): void
+```
+
+- readFileSync
+
+```ts
+function readFileSync(path: string): string
+```
+
+- removeFileSync
+
+```ts
+function removeFileSync(path: string): boolean
+```
+
+- copyFileSync
+
+```ts
+function copyFileSync(
+  src: string,
+  dest: string,
+  {
+    transform,
+    force,
+  }: { transform?: (content: string) => string; force?: boolean }
+): void
+```
+
+- dirExistsSync
+
+```ts
+function dirExistsSync(path: string): boolean
+```
+
+- readDirSync
+
+```ts
+function readDirSync(path: string, recursive = true): string[]
+```
+
+- removeDirSync
+
+```ts
+function removeDirSync(path: string): void
+```
+
+- createDirSync
+
+```ts
+function createDirSync(path: string): string | undefined
+```
+
+- copyDirSync
+
+```ts
+function copyDirSync(src: string, dest: string, { force }: { force?: boolean } = {}): void
 ```
 
 ## License

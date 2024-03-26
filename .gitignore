@@ -1,5 +1,7 @@
 node_modules
 dist
 tests/tmp/*
+tests/tmp-sync/*
 !tests/tmp/.gitkeep
+!tests/tmp-sync/.gitkeep
 .idea
